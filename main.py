@@ -17,7 +17,7 @@ def plot_function(f, x_range):
 
     canvas = FigureCanvasTkAgg(fig, master=window)
     canvas.draw()
-    canvas.get_tk_widget().grid(column=2, row=9)
+    canvas.get_tk_widget().grid(column=7, row=0)
 
 
 def clicked():
