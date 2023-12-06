@@ -19,6 +19,7 @@ def plot_function(f, x_range):
     canvas.draw()
     canvas.get_tk_widget().grid(column=2, row=9)
 
+
 def clicked():
     value_x0 = int(enter_x0.get())
     value_x1 = int(enter_x1.get())
@@ -38,20 +39,21 @@ def clicked():
         res = secant_method(f2, value_x0, value_x1, value_eps, it)
         output_result = "ответ: {}".format(res)
         result_output.configure(text=output_result)
-        plot_function(f1, [value_x0, value_x1])
+        plot_function(f2, [value_x0, value_x1])
 
     elif selected.get() == 3:
         res = secant_method(f3, value_x0, value_x1, value_eps, it)
         output_result = "ответ: {}".format(res)
         result_output.configure(text=output_result)
-        plot_function(f1, [value_x0, value_x1])
+        plot_function(f3, [value_x0, value_x1])
 
-    else: result_output.configure(text='вы должны выбрать функцию!')
+    else:
+        result_output.configure(text='вы должны выбрать функцию!')
 
 
 window = Tk()
 window.title("Метод секущих")
-window.geometry('800x500')  # указание размеров окна
+window.geometry('1000x800')  # указание размеров окна
 lbl_x0 = Label(window, text="x0: ")
 lbl_x0.grid(column=0, row=0, sticky="w")
 lbl_x1 = Label(window, text="x1: ")
