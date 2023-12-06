@@ -17,7 +17,7 @@ def plot_function(f, x_range):
 
     canvas = FigureCanvasTkAgg(fig, master=window)
     canvas.draw()
-    canvas.get_tk_widget().grid(column=7, row=0)
+    canvas.get_tk_widget().place(x=200, y=10)
 
 
 def clicked():
@@ -26,7 +26,7 @@ def clicked():
     value_eps = float(enter_eps.get())
 
     result_output = Label(window)
-    result_output.grid(column=2, row=8)
+    result_output.place(x=0, y=400)
 
     if selected.get() == 1:
 
@@ -51,24 +51,34 @@ def clicked():
         result_output.configure(text='вы должны выбрать функцию!')
 
 
+
 window = Tk()
 window.title("Метод секущих")
-window.geometry('1000x800')  # указание размеров окна
+window.geometry('750x500')  # указание размеров окна
 lbl_x0 = Label(window, text="x0: ")
-lbl_x0.grid(column=0, row=0, sticky="w")
+lbl_x0.place(x=0, y=10, anchor="w")
 lbl_x1 = Label(window, text="x1: ")
-lbl_x1.grid(column=0, row=1, sticky="w")
+lbl_x1.place(x=0, y=50, anchor="w")
 lbl_eps = Label(window, text="epsilon: ")
-lbl_eps.grid(column=0, row=2, sticky="w")
+lbl_eps.place(x=0, y=90, anchor="w")
+
+fig = Figure(figsize=(5, 4), dpi=100)
+ax = fig.add_subplot(111)
+ax.plot(0, 0)
+
+canvas = FigureCanvasTkAgg(fig, master=window)
+canvas.draw()
+canvas.get_tk_widget().place(x=200, y=10)
+
 
 enter_x0 = Entry(window, width=10)
-enter_x0.grid(column=1, row=0, sticky="w")
+enter_x0.place(x=60, y=0)
 enter_x1 = Entry(window, width=10)
-enter_x1.grid(column=1, row=1, sticky="w")
+enter_x1.place(x=60, y=40)
 #
 enter_eps = Entry(window, width=10)
 #
-enter_eps.grid(column=1, row=2)
+enter_eps.place(x=60, y=80)
 
 enter_x0.focus()  # для автоматического наведения на окошко ввода
 
@@ -77,13 +87,13 @@ selected = IntVar()
 rad1 = Radiobutton(window, text='x^2 - 4', value=1, variable=selected)
 rad2 = Radiobutton(window, text='x + 5', value=2, variable=selected)
 rad3 = Radiobutton(window, text='sin(x)', value=3, variable=selected)
-rad1.grid(column=0, row=4, sticky="w")
-rad2.grid(column=0, row=5, sticky="w")
-rad3.grid(column=0, row=6, sticky="w")
+rad1.place(x=0, y=140, anchor="w")
+rad2.place(x=0, y=165, anchor="w")
+rad3.place(x=0, y=190, anchor="w")
 
 
 btn = Button(window, text="Вычислить", command=clicked)
-btn.grid(column=0, row=7)
+btn.place(x=0, y=220)
 
 
 def f1(x):
