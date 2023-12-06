@@ -3,7 +3,6 @@ from tkinter import *
 from math import *
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from tkinter.messagebox import showerror
 import numpy as np
 
 
@@ -51,16 +50,19 @@ def clicked():
         result_output.configure(text='вы должны выбрать функцию!')
 
 
-
 window = Tk()
 window.title("Метод секущих")
-window.geometry('750x500')  # указание размеров окна
+window.geometry('720x450')  # указание размеров окна
+
+h1 = Label(window, text="Метод секущих", font=("Arial", 16, "bold"))
+h1.place(x=30, y=18, anchor="w")
+
 lbl_x0 = Label(window, text="x0: ")
-lbl_x0.place(x=0, y=10, anchor="w")
+lbl_x0.place(x=10, y=50, anchor="w")
 lbl_x1 = Label(window, text="x1: ")
-lbl_x1.place(x=0, y=50, anchor="w")
+lbl_x1.place(x=10, y=90, anchor="w")
 lbl_eps = Label(window, text="epsilon: ")
-lbl_eps.place(x=0, y=90, anchor="w")
+lbl_eps.place(x=10, y=130, anchor="w")
 
 fig = Figure(figsize=(5, 4), dpi=100)
 ax = fig.add_subplot(111)
@@ -72,13 +74,13 @@ canvas.get_tk_widget().place(x=200, y=10)
 
 
 enter_x0 = Entry(window, width=10)
-enter_x0.place(x=60, y=0)
+enter_x0.place(x=80, y=40)
 enter_x1 = Entry(window, width=10)
-enter_x1.place(x=60, y=40)
+enter_x1.place(x=80, y=80)
 #
 enter_eps = Entry(window, width=10)
 #
-enter_eps.place(x=60, y=80)
+enter_eps.place(x=80, y=120)
 
 enter_x0.focus()  # для автоматического наведения на окошко ввода
 
@@ -87,13 +89,13 @@ selected = IntVar()
 rad1 = Radiobutton(window, text='x^2 - 4', value=1, variable=selected)
 rad2 = Radiobutton(window, text='x + 5', value=2, variable=selected)
 rad3 = Radiobutton(window, text='sin(x)', value=3, variable=selected)
-rad1.place(x=0, y=140, anchor="w")
-rad2.place(x=0, y=165, anchor="w")
-rad3.place(x=0, y=190, anchor="w")
+rad1.place(x=10, y=180, anchor="w")
+rad2.place(x=10, y=205, anchor="w")
+rad3.place(x=10, y=230, anchor="w")
 
 
 btn = Button(window, text="Вычислить", command=clicked)
-btn.place(x=0, y=220)
+btn.place(x=10, y=260)
 
 
 def f1(x):
